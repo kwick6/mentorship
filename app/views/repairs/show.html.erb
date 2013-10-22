@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'See Shops', shops_path %>
+<%= link_to 'See Owners', owners_path %>
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>Owner</th>
+    <th>Repaired on</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <tr>
+    <td><%= Shop.find(@repair.shop_id).name %>
+    <td><%= Owner.find(@repair.owner_id).name %></td>
+    <td><%= @repair.date_repaired %>
+  </tr>
+</table>

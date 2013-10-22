@@ -1,0 +1,31 @@
+<%= form_for(@repair) do |f| %>
+  <% if @repair.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@repair.errors.count, "error") %> prohibited this repair from being saved:</h2>
+
+      <ul>
+      <% @repair.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date_repaired %><br />
+    <%= f.datetime_select :date_repaired %>
+  </div>
+  <div class="field">
+    <%= f.label :owner %><br />
+    <%= f.collection_select :owner_id, Owner.all, :id, :name %>
+    <%= link_to "New owner", new_owner_path %>
+  </div>
+  <div class="field">
+    <%= f.label :shop %><br />
+    <%= f.collection_select :shop_id, Shop.all, :id, :name %>
+    <%= link_to "New shop", new_shop_path %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
